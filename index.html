@@ -5,62 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        :root{
-            --blendMode:normal;
-            --blendColor:none;
-            --opacityColor:1;
-            --IMAGE1:url(https://www.xtrafondos.com/descargar.php?id=3963&resolucion=1920x1080);
-            --IMAGE2:url();
-
-        }
-
-        .droppedImage{
-            background-blend-mode:var(--blendMode);
-            background-color: var(--blendColor);
-            opacity: var(--opacityColor);
-            background-image:   var(--IMAGE1),
-                                var(--IMAGE2);
-            background-size: contain;
-            width: 100%;
-            height: 30em;
-        }
-
-        .misTexturas{
-            border: solid black 2px;
-            display: flex;
-        }
-        
-        .texturas{
-            border: solid black 2px;
-            height: 8em;
-            width: 8em;
-
-        }
-        .textura1{
-            background: url(../D&D1/textures/txt1.png);
-        }
-        .textura2{
-            background: url(../D&D1/textures/txt2.png);
-        }
-        .textura3{
-            background: url(../D&D1/textures/txt3.png);
-        }
-        .textura4{
-            background: url(../D&D1/textures/txt4.png);
-        }
-        .textura5{
-            background: url(../D&D1/textures/txt5.png);
-        }
-        .textura6{
-            background: url(../D&D1/textures/txt6.png);
-        }
-        .textura7{
-            background: url(../D&D1/textures/txt7.png);
-        }
-
-    </style>
+    <link rel="stylesheet" href="../D_D1/public/styles/stles.css">
 </head>
+
 <body>
     <div>
         <select id="effect_Selector">
@@ -105,83 +52,7 @@
         <div class="droppedImage">
             <img  src=>
         </div>
-    </div>
-
- 
-
-    <script>
-    const image = document.getElementsByClassName("droppedImage")
-        let textureSelected
-        let colorSelected
-        let effectSelected
-
-        effect_Selector.addEventListener("input",(e)=>{
-            console.log(e.target.value)
-            const effect_Selected = e.target.value
-            document.documentElement.style.setProperty('--blendMode',`${effect_Selected}`);
-        })
-
-        color_Selector.addEventListener("input",(e)=>{
-            console.log(color_Opacity.checked)
-            const color_Selected = e.target.value
-            if(color_Opacity.checked){
-                return document.documentElement.style.setProperty('--blendColor',`${color_Selected}`)
-                colorSelected = color_Selected
-            } else{
-                return
-            }       
-        })
-        
-        color_Opacity.addEventListener("input",(e)=>{
-            console.log(color_Opacity.checked)
-            if(!color_Opacity.checked){
-                return document.documentElement.style.setProperty('--blendColor',`none`)
-            }else{
-                return document.documentElement.style.setProperty('--blendColor',`${color_Selector.value}`)
-            }
-        }) 
-        
-        texture_OnOff.addEventListener("input",(e)=>{
-            console.log(texture_OnOff.checked)
-            if(!texture_OnOff.checked){
-                return document.documentElement.style.setProperty('--IMAGE2',`none`)
-            }
-            else{
-                return document.documentElement.style.setProperty('--IMAGE2',`${textureSelected}`)
-            }
-        }) 
-
-        dropZone.addEventListener("dragover",(e)=>{
-            e.preventDefault()
-        })
-
-        dropZone.addEventListener("drop",(e)=>{ /*SOLTAR*/
-            let i = e.dataTransfer.getData("textura")
-            // dropZone.style.background= `url("./txt${i}.png")`
-
-            if(texture_OnOff.checked){
-                document.documentElement.style.setProperty('--IMAGE2',`url("../D&D1/textures/txt${i}.png")`);
-                textureSelected = `url("../D&D1/textures/txt${i}.png")`;
-            }else{return}
-            
-        })
-
-        const transferirTextura = (i,e)=>{
-            e.dataTransfer.setData("textura",i)
-        }
-
-        for (let i = 1; i < texture_Selector.children.length + 1; i++) {       
-            console.log(`.textura${i}`)     
-            document.querySelector(`.textura${i}`).addEventListener("dragstart",(e)=>{
-                transferirTextura(i,e)                
-            })
-        }
-
-        
-
-
-    </script>
-
-
+    </div> 
+<script src="../D_D1/public/javascript/index.js"></script>
 </body>
 </html>
